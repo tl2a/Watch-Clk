@@ -1,0 +1,219 @@
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  font-family: Oswald;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.section {
+  position: relative;
+  width: calc(100% / 2);
+  height: 100vh;
+}
+.section .strap {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100%;
+  background-color: #333333;
+  animation: left 1s forwards ease-in-out;
+}
+.section.content {
+  display: grid;
+  align-content: center;
+}
+.section.content h1 {
+  font-weight: bold;
+  font-size: 3.2em;
+  margin-bottom: 20px;
+}
+.section.content p {
+  font-size: 1.4em;
+  font-weight: 600;
+  /* color: #888888; */
+}
+.strap::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border: 4px solid #333;
+  background-color: #ffffff;
+  border-radius: 50%;
+  z-index: 2;
+}
+.strap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  border: 4px solid #ffffff;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 1;
+  animation: expand 1s forwards ease-in-out;
+}
+.strap:hover::after {
+  width: 250px;
+  height: 250px;
+}
+
+/* hands */
+.strap #hand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 3px;
+  height: 3px;
+  border: 2px solid #333333;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 0.02s;
+  z-index: 998;
+  opacity: 0;
+  animation: alph 1s forwards ease-in-out;
+  animation-delay: 1s;
+}
+#hand::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  border-radius: 4px;
+  background-color: #333333;
+}
+#hand.hrs::before {
+  height: 42px;
+}
+#hand.mins::before {
+  height: 80px;
+}
+#hand.secs {
+  z-index: 999;
+  border: 3px solid #ff3535;
+}
+#hand.secs::before {
+  height: 70px;
+  background-color: #ff3535;
+}
+
+/* date */
+.week {
+  text-transform: uppercase;
+  color: #ff3535;
+}
+.month {
+  text-transform: uppercase;
+}
+/* animation */
+.anime {
+  overflow: hidden;
+}
+.anime h2 {
+  transform: translateY(-40px);
+  animation: up 1s forwards ease-in-out;
+  animation-delay: 1s;
+
+}
+.anime h1 {
+  transform: translateY(100px);
+  animation: down 1s forwards ease-in-out;
+  animation-delay: 1s;
+}
+.anime p {
+  transform: translateY(100px);
+  animation: down 1s forwards ease-in-out;
+  animation-delay: 1.5s;
+}
+
+/* keyframes */
+@keyframes up {
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes down {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes left {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes expand {
+  from {
+    width: 600px;
+    height: 600px;
+  }
+  to {
+    width: 260px;
+    height: 260px;
+  }
+}
+@keyframes alph {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* media queries */
+@media all and (max-width: 480px) {
+  .section.content {
+    display: block;
+  }
+  .section.content h1 {
+    font-size: 2.2em;
+  }
+  .anime:first-child {
+    margin-top: 25px;
+  }
+  .anime h1 {
+    transform: translateY(170px);
+  }
+  @keyframes down {
+    from {
+      transform: translateY(170px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .anime:last-child {
+    margin-top: 190px;
+  }
+}

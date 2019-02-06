@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/style.css" />
+  <title>Watch your back</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="section">
+      <div class="strap">
+        <div id="hand" class="hrs"></div>
+        <div id="hand" class="mins"></div>
+        <div id="hand" class="secs"></div>
+      </div>
+    </div>
+    <div class="section content">
+      <div class="anime">
+        <h2 class="week">WEDNESDAY</h2>
+      </div>
+      <div class="anime">
+        <h1><span class="date">6</span>th <span class="month">FEBRUARY</span>, <span class="year">2019</span></h1>
+      </div>
+      <div class="anime">
+        <p><span class="hr">1</span> : <span class="min">36</span> : <span class="sec">02</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // hands
+    const HOURHAND = document.querySelector(".hrs");
+    const MINUTEHAND = document.querySelector(".mins");
+    const SECONDHAND = document.querySelector(".secs");
+    // Time
+    let HR = document.querySelector(".hr");
+    let MIN = document.querySelector(".min");
+    let SEC = document.querySelector(".sec");
+    // Date
+    let Wk = document.querySelector(".week");
+    let Dt = document.querySelector(".date");
+    let Mnt = document.querySelector(".month");
+    let Yr = document.querySelector(".year");
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    function run_the_clock() {
+      var date = new Date();
+      // Time
+      let hr = date.getHours();
+      let min = date.getMinutes();
+      let sec = date.getSeconds();
+      // Date
+      Wk.textContent = days[date.getDay()];
+      Dt.textContent = date.getDate();
+      Mnt.textContent = months[date.getMonth()];
+      Yr.textContent = date.getFullYear();
+      if (hr < 10 || hr == 0) {
+        HR.textContent = '0' + hr;
+      }
+      else {
+        HR.textContent = hr;
+      }
+
+      if (min < 10 || min == 0) {
+        MIN.textContent = '0' + min;
+      }
+      else {
+        MIN.textContent = min;
+      }
+
+      if (sec < 10 || sec == 0) {
+        SEC.textContent = '0' + sec;
+      }
+      else {
+        SEC.textContent = sec;
+      }
+
+      let hrPosition = hr * 360 / 12 + ((min * 360 / 60) / 12);
+      let minPosition = (min * 360 / 60) + (sec * 360 / 60) / 60;
+      let secPosition = sec * 360 / 60;
+      //Then we need to apply these numbers as degrees in the styles for transform on each of the objects.
+      HOURHAND.style.transform = "rotate(" + hrPosition + "deg) ";
+      MINUTEHAND.style.transform = "rotate(" + minPosition + "deg) ";
+      SECONDHAND.style.transform = "rotate(" + secPosition + "deg) ";
+    }
+    var interval = setInterval(run_the_clock, 1000);
+  </script>
+</body>
+
+</html>
