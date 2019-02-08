@@ -72,7 +72,35 @@ p {
   width: 250px;
   height: 250px;
 }
-
+/* numbers */
+.strap .indicate {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  width: 270px;
+  height: 270px;
+  z-index: 999;
+  animation: alph 1s forwards ease-in-out;
+}
+.strap .indicate h2 {
+  color: #efefef;
+  font-size: 0.8em;
+}
+.strap .indicate .num:nth-child(2){
+  position: absolute;
+  align-self: flex-end;
+  padding-right: 40px;
+}
+.strap .indicate .num:nth-child(3){
+  align-self: flex-start;
+  margin-left: 40px;
+}
 /* hands */
 .strap #hand {
   position: absolute;
