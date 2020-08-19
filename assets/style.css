@@ -89,7 +89,7 @@ p {
   animation: alph 1s forwards ease-in-out;
 }
 .strap .indicate h2 {
-  color: #efefef;
+  color: #afafaf;
   font-size: 0.8em;
 }
 .strap .indicate .num:nth-child(2){
